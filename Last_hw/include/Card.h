@@ -1,0 +1,20 @@
+#ifndef CARD_H
+#define CARD_H
+#include <iosfwd>
+
+class Card {
+public:
+    virtual ~Card() = default;
+
+    // abstract.
+    virtual int value() const = 0;
+    virtual void print(std::ostream& os) const = 0;
+
+    // compare by numeric value.
+    virtual bool operator<(const Card& other) const;
+    virtual bool operator==(const Card& other) const;
+
+    friend std::ostream& operator<<(std::ostream& os, const Card& card);
+};
+
+#endif
